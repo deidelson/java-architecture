@@ -12,9 +12,9 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class PersonaDaoImpl implements PersonaDao{
+public class PersonaDaoImpl{ //m agregar implements
 
-    EntityManager entityManager;
+/*    EntityManager entityManager;
 
     public PersonaDaoImpl(@Autowired EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -23,5 +23,7 @@ public class PersonaDaoImpl implements PersonaDao{
     @Override
     public List<Persona> findAll() {
         return entityManager.createQuery("SELECT p FROM Persona as p", Persona.class).getResultList();
-    }
+    }*/
+
+
 }
