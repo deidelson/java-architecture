@@ -25,18 +25,13 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
-    public void save(Persona p) {
+    public void saveUpdate(Persona p) {
         personaDao.save(p);
     }
 
     @Override
     public void delete(Persona p) {
         personaDao.delete(p.getId());
-    }
-
-    @Override
-    public void update(Persona p) {
-        personaDao.save(p);
     }
 
     @Override

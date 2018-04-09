@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,11 +23,11 @@ public class PersonaController {
         return personaService.findAll();
     }
 
-    @PostMapping(value = "/guardar",
+    @PostMapping(value = "/saveUpdate",
     consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void save(@RequestBody Persona p){
-        personaService.save(p);
+        personaService.saveUpdate(p);
     }
 
     @GetMapping(value = "/listar"+"/{nombre}")
@@ -37,4 +36,12 @@ public class PersonaController {
     public List<Persona> getPersonasPorNombre(@PathVariable String nombre){
         return personaService.findByNombre(nombre);
     }
+
+    @DeleteMapping(value = "/borrar",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@RequestBody Persona p){
+        personaService.delete(p);
+    }
+
 }

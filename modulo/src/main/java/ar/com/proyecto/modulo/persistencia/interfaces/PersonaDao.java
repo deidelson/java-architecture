@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PersonaDao extends CrudRepository<Persona, Long>{
 
-//    @Query(value = "select p from Persona p")
+
     public List<Persona> findAll();
 
     @Query("select p from Persona p where p.nombre like %?1%")
