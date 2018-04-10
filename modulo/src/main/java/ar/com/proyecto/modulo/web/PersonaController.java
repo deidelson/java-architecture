@@ -1,5 +1,6 @@
 package ar.com.proyecto.modulo.web;
 
+import ar.com.proyecto.modulo.model.dto.PersonaDTO;
 import ar.com.proyecto.modulo.model.entity.Persona;
 import ar.com.proyecto.modulo.service.interfaces.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,28 +21,28 @@ public class PersonaController {
     @GetMapping(value = "/listar")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Persona> getPersonas(){
+    public List<PersonaDTO> getPersonas(){
         return personaService.findAll();
     }
 
     @PostMapping(value = "/saveUpdate",
     consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void save(@RequestBody Persona p){
+    public void save(@RequestBody PersonaDTO p){
         personaService.saveUpdate(p);
     }
 
     @GetMapping(value = "/listar"+"/{nombre}")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Persona> getPersonasPorNombre(@PathVariable String nombre){
+    public List<PersonaDTO> getPersonasPorNombre(@PathVariable String nombre){
         return personaService.findByNombre(nombre);
     }
 
     @DeleteMapping(value = "/borrar",
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@RequestBody Persona p){
+    public void delete(@RequestBody PersonaDTO p){
         personaService.delete(p);
     }
 
