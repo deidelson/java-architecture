@@ -1,9 +1,7 @@
 package ar.com.proyecto.modulo.web;
 
 
-import ar.com.proyecto.modulo.arquitectura.model.ResponseDTO;
 import ar.com.proyecto.modulo.model.dto.UserDTO;
-import ar.com.proyecto.modulo.model.entity.User;
 import ar.com.proyecto.modulo.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

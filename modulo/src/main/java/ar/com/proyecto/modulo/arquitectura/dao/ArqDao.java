@@ -1,7 +1,6 @@
 package ar.com.proyecto.modulo.arquitectura.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
