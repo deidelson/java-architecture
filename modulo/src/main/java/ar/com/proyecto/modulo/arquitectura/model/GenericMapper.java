@@ -1,4 +1,4 @@
-package ar.com.proyecto.modulo.model.mapper.interfaces;
+package ar.com.proyecto.modulo.arquitectura.model;
 
 import java.io.Serializable;
 
