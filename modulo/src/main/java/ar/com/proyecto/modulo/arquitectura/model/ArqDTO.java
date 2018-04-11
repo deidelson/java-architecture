@@ -1,4 +1,6 @@
 package ar.com.proyecto.modulo.arquitectura.model;
 
-public class ArqDTO {
+import java.io.Serializable;
+
+public class ArqDTO implements Serializable {
 }
