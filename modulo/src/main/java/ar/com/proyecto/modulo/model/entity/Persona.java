@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "PERSONA")
-//@NamedQuery(query = "select p from Persona p", name = "getPersonas")
 public class Persona implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.AUTO)

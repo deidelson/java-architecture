@@ -2,7 +2,6 @@ package ar.com.proyecto.modulo.model.dto;
 
 import ar.com.proyecto.modulo.arquitectura.model.ArqDTO;
 
-import java.io.Serializable;
 
 public class PersonaDTO extends ArqDTO {
     private Long id;

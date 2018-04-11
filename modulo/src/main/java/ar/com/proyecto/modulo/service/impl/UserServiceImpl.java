@@ -1,8 +1,6 @@
 package ar.com.proyecto.modulo.service.impl;
 
-import ar.com.proyecto.modulo.arquitectura.model.ResponseDTO;
 import ar.com.proyecto.modulo.model.dto.UserDTO;
-import ar.com.proyecto.modulo.model.entity.User;
 import ar.com.proyecto.modulo.model.mapper.UserMapper;
 import ar.com.proyecto.modulo.persistencia.interfaces.UserDao;
 import ar.com.proyecto.modulo.service.interfaces.UserService;

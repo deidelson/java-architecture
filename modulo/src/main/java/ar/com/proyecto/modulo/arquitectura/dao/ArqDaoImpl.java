@@ -1,6 +1,5 @@
 package ar.com.proyecto.modulo.arquitectura.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

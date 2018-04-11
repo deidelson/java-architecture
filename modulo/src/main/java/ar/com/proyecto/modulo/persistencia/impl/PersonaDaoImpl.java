@@ -4,11 +4,7 @@ import ar.com.proyecto.modulo.arquitectura.dao.ArqDaoImpl;
 import ar.com.proyecto.modulo.model.entity.Persona;
 import ar.com.proyecto.modulo.persistencia.interfaces.PersonaDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.support.JpaEntityInformation;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;

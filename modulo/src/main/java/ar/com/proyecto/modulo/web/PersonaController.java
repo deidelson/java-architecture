@@ -1,7 +1,6 @@
 package ar.com.proyecto.modulo.web;
 
 import ar.com.proyecto.modulo.model.dto.PersonaDTO;
-import ar.com.proyecto.modulo.model.entity.Persona;
 import ar.com.proyecto.modulo.service.interfaces.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
