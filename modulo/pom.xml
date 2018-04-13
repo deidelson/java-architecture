@@ -58,6 +58,13 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>local mariaDocker</id>
+        </profile>
+
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
