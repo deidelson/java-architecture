@@ -8,6 +8,6 @@ public interface UserDao extends ArqDao<User, String>{
 
     public boolean existsUserByUsuario(User user);
 
-    @Query("select u from User u where u.usuario = ?1 and u.contrasenia = ?2")
-    public User findUserByNickPass(String nick, String pass);
+    @Query("select u from User u where u.usuario = ?1")
+    public User findUserByUser(String nick);
 }

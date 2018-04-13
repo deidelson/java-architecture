@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseDTO<UserDTO> login(UserDTO user) {
-        User u = dao.findUserByNickPass(user.getUsuario(), user.getContrasenia());
+        User u = dao.findUserByUser(user.getUsuario());
 
         ResponseDTO<UserDTO> ret = new ResponseDTO<>();
 
-        ret.setObjeto(u != null ? userMapper.toDTO(u) : null);
-        ret.setResponse(u != null ? "Exito" : "Credenciales incorrectas");
+        ret.setObjeto(u != null && u.getContrasenia().equals(user.getContrasenia()) ? userMapper.toDTO(u) : null);
+        ret.setResponse(u != null && u.getContrasenia().equals(user.getContrasenia()) ? "Exito" : "Credenciales incorrectas");
 
         return ret;
     }
