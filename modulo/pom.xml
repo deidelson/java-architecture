@@ -33,7 +33,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-<!--        <dependency>
+ <!--       <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>-->
@@ -57,13 +57,6 @@
             <artifactId>mariadb-java-client</artifactId>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>local mariaDocker</id>
-        </profile>
-
-    </profiles>
 
     <build>
         <plugins>

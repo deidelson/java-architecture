@@ -32,8 +32,8 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
-    public void saveUpdate(PersonaDTO p) {
-        personaDao.save(personaMapper.toEntity(p));
+    public PersonaDTO saveUpdate(PersonaDTO p) {
+         return personaMapper.toDTO(personaDao.save(personaMapper.toEntity(p)));
     }
 
     @Override

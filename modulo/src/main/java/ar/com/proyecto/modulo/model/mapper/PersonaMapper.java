@@ -2,7 +2,7 @@ package ar.com.proyecto.modulo.model.mapper;
 
 import ar.com.proyecto.modulo.model.dto.PersonaDTO;
 import ar.com.proyecto.modulo.model.entity.Persona;
-import ar.com.proyecto.modulo.arquitectura.model.GenericMapper;
+import ar.com.proyecto.modulo.arquitectura.model.mapper.GenericMapper;
 import org.springframework.stereotype.Service;
 
 @Service

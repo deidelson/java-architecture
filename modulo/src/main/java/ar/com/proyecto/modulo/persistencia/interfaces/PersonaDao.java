@@ -1,9 +1,8 @@
 package ar.com.proyecto.modulo.persistencia.interfaces;
 
-import ar.com.proyecto.modulo.arquitectura.dao.ArqDao;
+import ar.com.proyecto.modulo.arquitectura.dao.interf.ArqDao;
 import ar.com.proyecto.modulo.model.entity.Persona;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 

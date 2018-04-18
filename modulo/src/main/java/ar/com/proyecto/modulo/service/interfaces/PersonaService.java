@@ -9,7 +9,7 @@ public interface PersonaService {
 
     public List<PersonaDTO> findAll();
 
-    public void saveUpdate(PersonaDTO p);
+    public PersonaDTO saveUpdate(PersonaDTO p);
 
     public void delete(PersonaDTO p);
 

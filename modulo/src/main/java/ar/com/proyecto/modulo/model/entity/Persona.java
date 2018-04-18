@@ -1,11 +1,13 @@
 package ar.com.proyecto.modulo.model.entity;
 
+import ar.com.proyecto.modulo.arquitectura.model.entity.ArqEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "PERSONA")
-public class Persona implements Serializable {
+public class Persona extends ArqEntity{
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
@@ -50,5 +52,10 @@ public class Persona implements Serializable {
         int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getNombre() != null ? getNombre().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public boolean hasDetachedEntities() {
+        return this.getId()!=null;
     }
 }

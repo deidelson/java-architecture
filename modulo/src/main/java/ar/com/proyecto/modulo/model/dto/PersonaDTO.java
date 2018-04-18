@@ -1,6 +1,6 @@
 package ar.com.proyecto.modulo.model.dto;
 
-import ar.com.proyecto.modulo.arquitectura.model.ArqDTO;
+import ar.com.proyecto.modulo.arquitectura.model.dto.ArqDTO;
 
 
 public class PersonaDTO extends ArqDTO {

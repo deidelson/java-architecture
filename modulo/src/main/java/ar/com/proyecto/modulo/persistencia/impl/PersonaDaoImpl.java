@@ -1,6 +1,6 @@
 package ar.com.proyecto.modulo.persistencia.impl;
 
-import ar.com.proyecto.modulo.arquitectura.dao.ArqDaoImpl;
+import ar.com.proyecto.modulo.arquitectura.dao.impl.ArqDaoImpl;
 import ar.com.proyecto.modulo.model.entity.Persona;
 import ar.com.proyecto.modulo.persistencia.interfaces.PersonaDao;
 import org.springframework.beans.factory.annotation.Autowired;

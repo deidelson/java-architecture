@@ -27,8 +27,8 @@ public class PersonaController {
     @PostMapping(value = "/saveUpdate",
     consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void save(@RequestBody PersonaDTO p){
-        personaService.saveUpdate(p);
+    public PersonaDTO save(@RequestBody PersonaDTO p){
+        return personaService.saveUpdate(p);
     }
 
     @GetMapping(value = "/listar"+"/{nombre}")
