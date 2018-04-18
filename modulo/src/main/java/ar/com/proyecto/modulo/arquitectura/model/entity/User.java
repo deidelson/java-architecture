@@ -74,10 +74,4 @@ public class User extends ArqEntity{
         return getUsuario() != null ? getUsuario().hashCode() : 0;
     }
 
-    @Override
-    public boolean hasDetachedEntities() {
-        Boolean ret = false;
-        ret = ret || this.getId() != null;
-        return ret || this.getRoles().stream().anyMatch( r -> r.getId() == null);
-    }
 }

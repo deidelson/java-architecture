@@ -54,8 +54,5 @@ public class Persona extends ArqEntity{
         return result;
     }
 
-    @Override
-    public boolean hasDetachedEntities() {
-        return this.getId()!=null;
-    }
+
 }

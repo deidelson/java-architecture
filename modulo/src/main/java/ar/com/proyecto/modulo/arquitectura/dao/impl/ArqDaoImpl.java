@@ -24,10 +24,6 @@ public abstract class ArqDaoImpl <T extends ArqEntity, ID extends Serializable> 
 
     @Override
     public <S extends T> S save(S entity){
-        if(entity.hasDetachedEntities())
-            return getEntityManager().merge(entity);
-        else
-            getEntityManager().persist(entity);
-        return entity;
+       return entityManager.merge(entity);
     }
 }
