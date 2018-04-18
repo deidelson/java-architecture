@@ -1,10 +1,10 @@
-package ar.com.proyecto.modulo.web;
+package ar.com.proyecto.modulo.arquitectura.web;
 
 
-import ar.com.proyecto.modulo.arquitectura.model.ResponseDTO;
-import ar.com.proyecto.modulo.model.dto.UserDTO;
-import ar.com.proyecto.modulo.model.entity.User;
-import ar.com.proyecto.modulo.service.interfaces.UserService;
+import ar.com.proyecto.modulo.arquitectura.model.dto.ResponseDTO;
+import ar.com.proyecto.modulo.arquitectura.model.dto.UserDTO;
+import ar.com.proyecto.modulo.arquitectura.model.entity.User;
+import ar.com.proyecto.modulo.arquitectura.service.interf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,10 +19,12 @@ public class UserController {
     @Autowired
     UserService service;
 
-    @PostMapping(value = "/saveUpdate")
+    @PostMapping(value = "/saveUpdate",
+    produces = MediaType.APPLICATION_JSON_VALUE,
+    consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void save(@RequestBody UserDTO user){
-        service.save(user);
+    public User save(@RequestBody UserDTO user){
+       return service.save(user);
     }
 
     @GetMapping(value = "/listar",
