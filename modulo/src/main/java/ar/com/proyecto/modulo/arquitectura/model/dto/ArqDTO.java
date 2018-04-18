@@ -1,4 +1,4 @@
-package ar.com.proyecto.modulo.arquitectura.model;
+package ar.com.proyecto.modulo.arquitectura.model.dto;
 
 import java.io.Serializable;
 

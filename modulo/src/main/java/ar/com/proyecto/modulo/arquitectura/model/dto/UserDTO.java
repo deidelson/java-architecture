@@ -1,14 +1,26 @@
-package ar.com.proyecto.modulo.model.dto;
+package ar.com.proyecto.modulo.arquitectura.model.dto;
 
-import ar.com.proyecto.modulo.arquitectura.model.ArqDTO;
-import ar.com.proyecto.modulo.model.entity.User;
+import ar.com.proyecto.modulo.arquitectura.model.entity.Rol;
+import ar.com.proyecto.modulo.arquitectura.model.entity.User;
+
+import java.util.List;
 
 public class UserDTO extends ArqDTO{
 
+    private Long id;
     private String usuario;
     private String contrasenia;
+    private List<RolDTO> roles;
 
     public UserDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsuario() {
@@ -25,6 +37,14 @@ public class UserDTO extends ArqDTO{
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    public List<RolDTO> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RolDTO> roles) {
+        this.roles = roles;
     }
 
     @Override
