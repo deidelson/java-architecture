@@ -9,9 +9,14 @@ import ar.com.proyecto.modulo.arquitectura.dao.interf.UserDao;
 import ar.com.proyecto.modulo.arquitectura.service.interf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,17 +56,20 @@ public class UserServiceImpl implements UserService {
         return ret;
     }
 
-/*    @Override
+    @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User u = dao.findUserByUser(s);
+        User usuario = dao.findUserByUser(s);
 
-        *//*List<GrantedAuthority> authorities = new ArrayList<>();
-        user.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+        if(usuario == null)
+            throw new UsernameNotFoundException(String.format("El usuario %s no existe",s));
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        usuario.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getNombreRol()));
         });
 
         UserDetails userDetails = new org.springframework.security.core.userdetails.
-                User(u.getUsuario(), u.getContrasenia());*//*
-        return  null;
-    }*/
+                User(usuario.getUsuario(), usuario.getContrasenia(), authorities);
+        return  userDetails;
+    }
 }
