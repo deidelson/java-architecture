@@ -31,6 +31,7 @@ public class PersonaController {
         return personaService.saveUpdate(p);
     }
 
+
     @GetMapping(value = "/listar"+"/{nombre}")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)

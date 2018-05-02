@@ -8,13 +8,13 @@ public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID", updatable = false)
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "ROLE_NAME", updatable = false)
+    @Column(name = "ROLE_NAME", updatable = false, insertable = false)
     private String nombreRol;
 
-    @Column(name = "DESCRIPCION", updatable = false)
+    @Column(name = "DESCRIPCION", updatable = false, insertable = false)
     private String descripcion;
 
     public Rol() {
