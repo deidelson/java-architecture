@@ -29,7 +29,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login/**").permitAll()
+                .antMatchers("/modulo/user/login/**").permitAll()
                 .antMatchers("/modulo/**" ).authenticated();
     }
 }
