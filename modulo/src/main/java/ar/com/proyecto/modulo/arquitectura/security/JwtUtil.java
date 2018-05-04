@@ -14,25 +14,27 @@ import static java.util.Collections.*;
 
 public class JwtUtil {
 
-    private static final String SING_KEY = "P@tit0";
-    private static final String TOKEN_HEADER = "Authorization";
+    private static final String SING_KEY = "eqwedasqwdasWEDSa";
+    public static final String TOKEN_HEADER = "Authorization";
+    //solo para poner algun prefix custom
+    private static final String TOKEN_PREFIX = "";
 
     // Método para crear el JWT y enviarlo al cliente en el header de la respuesta
     static void addAuthentication(HttpServletResponse res, String username) {
 
         String token = Jwts.builder()
-                .setSubject(username)
+                //aca se pone lo que se va a encriptar en el token
+                .setSubject(username+" "+"valor hardcodeado")
 
-                // Vamos a asignar un tiempo de expiracion de 1 minuto
-                // solo con fines demostrativos en el video que hay al final
+                //aca se pone el tiempo de vida del token, en este caso una hora
                 .setExpiration(new Date(System.currentTimeMillis() + 600000))
 
-                // Hash con el que firmaremos la clave
+                // Encriptamos el token con la key custom y eligiendo un algoritmo
                 .signWith(SignatureAlgorithm.HS512, SING_KEY)
                 .compact();
 
         //agregamos al encabezado el token
-        res.addHeader("Authorization", "Bearer " + token);
+        res.addHeader(TOKEN_HEADER, TOKEN_PREFIX+" "+token);
     }
 
     // Método para validar el token enviado por el cliente
@@ -45,13 +47,14 @@ public class JwtUtil {
         if (token != null) {
             String user = Jwts.parser()
                     .setSigningKey(SING_KEY)
-                    .parseClaimsJws(token.replace("Bearer", "")) //este metodo es el que valida
+                    .parseClaimsJws(token.replace(TOKEN_PREFIX, "")) //este metodo es el que valida
                     .getBody()
                     .getSubject();
 
             // Recordamos que para las demás peticiones que no sean /login
             // no requerimos una autenticacion por username/password
             // por este motivo podemos devolver un UsernamePasswordAuthenticationToken sin password
+
             return user != null ?
                     new UsernamePasswordAuthenticationToken(user, null, emptyList()) :
                     null;

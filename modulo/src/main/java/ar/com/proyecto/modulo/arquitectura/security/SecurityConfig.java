@@ -1,15 +1,23 @@
 package ar.com.proyecto.modulo.arquitectura.security;
 
+import ar.com.proyecto.modulo.arquitectura.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    //Aca estoy inyectando UserServiceImpl, su interface extiende de UserDetails por lo que sirve para el auth
+    @Autowired
+    UserDetailsService userDetailsService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
@@ -27,10 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // Creamos una cuenta de usuario por default
-        auth.inMemoryAuthentication()
+        // Auntenticacion en memoria
+      /*  auth.inMemoryAuthentication()
                 .withUser("ask")
                 .password("123")
-                .roles("ADMIN");
+                .roles("ADMIN");*/
+
+        //autenticacion con cualquier service que implemente userDetails
+        auth.userDetailsService(userDetailsService);
     }
 }

@@ -4,6 +4,7 @@ package ar.com.proyecto.modulo.arquitectura.web;
 import ar.com.proyecto.modulo.arquitectura.model.dto.ResponseDTO;
 import ar.com.proyecto.modulo.arquitectura.model.dto.UserDTO;
 import ar.com.proyecto.modulo.arquitectura.model.entity.User;
+import ar.com.proyecto.modulo.arquitectura.security.JwtUtil;
 import ar.com.proyecto.modulo.arquitectura.service.interf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/modulo/user")
+@RequestMapping//(value = "/modulo/user")
 public class UserController {
 
     @Autowired
@@ -38,17 +39,18 @@ public class UserController {
         return service.findAll();
     }
 
-/*    @PostMapping(
+    @PostMapping(
             value = "/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<ResponseDTO<UserDetails>> loggin(@RequestBody UserDTO user){
+    public ResponseEntity<String> loggin(@RequestBody UserDTO user){
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("token", "dasdqwedsadqweasdqwedsa");
-
-        return new ResponseEntity<>( service.loginSec(user), responseHeaders, HttpStatus.OK);
-    }*/
+        System.out.println("Entre");
+        String token= responseHeaders.get(JwtUtil.TOKEN_HEADER).get(0);
+        System.out.println("token "+token);
+        return new ResponseEntity<>(token, responseHeaders, HttpStatus.OK);
+    }
 }
