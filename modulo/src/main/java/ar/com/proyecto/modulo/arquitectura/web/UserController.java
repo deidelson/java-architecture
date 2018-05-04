@@ -6,8 +6,11 @@ import ar.com.proyecto.modulo.arquitectura.model.dto.UserDTO;
 import ar.com.proyecto.modulo.arquitectura.model.entity.User;
 import ar.com.proyecto.modulo.arquitectura.service.interf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,7 +45,10 @@ public class UserController {
     )
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public ResponseDTO<UserDTO> loggin(@RequestBody UserDTO user){
-        return service.login(user);
+    public ResponseEntity<ResponseDTO<UserDetails>> loggin(@RequestBody UserDTO user){
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("token", "dasdqwedsadqweasdqwedsa");
+
+        return new ResponseEntity<>( service.loginSec(user), responseHeaders, HttpStatus.OK);
     }
 }

@@ -9,6 +9,7 @@ import ar.com.proyecto.modulo.arquitectura.dao.interf.UserDao;
 import ar.com.proyecto.modulo.arquitectura.service.interf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.authentication.UserCredentials;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,6 +54,17 @@ public class UserServiceImpl implements UserService {
 
         ret.setObjeto(u != null && u.getContrasenia().equals(user.getContrasenia()) ? userMapper.toDTO(u) : null);
         ret.setResponse(u != null && u.getContrasenia().equals(user.getContrasenia()) ? "Exito" : "Credenciales incorrectas");
+
+        return ret;
+    }
+
+    @Override
+    public ResponseDTO<UserDetails> loginSec(UserDTO user) {
+        ResponseDTO<UserDetails> ret = new ResponseDTO<>();
+
+        UserDetails retUd = loadUserByUsername(user.getUsuario());
+
+        ret.setObjeto(retUd);
 
         return ret;
     }

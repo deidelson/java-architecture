@@ -30,10 +30,10 @@ public class UserMapper implements GenericMapper<User, UserDTO> {
     @Override
     public UserDTO toDTO(User entity) {
         UserDTO userDTO = new UserDTO();
-        userDTO.setId(entity.getId());
+        userDTO.setId(entity.getId() != null ? entity.getId() : null);
         userDTO.setContrasenia(entity.getContrasenia());
         userDTO.setUsuario(entity.getUsuario());
-        userDTO.setRoles(entity.getRoles() != null ? convertirARolDto(entity.getRoles()) : null);
+        userDTO.setRoles(! entity.getRoles().isEmpty() ? convertirARolDto(entity.getRoles()) : null);
         return userDTO;
     }
 

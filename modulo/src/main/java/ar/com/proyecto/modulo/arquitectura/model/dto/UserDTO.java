@@ -62,4 +62,14 @@ public class UserDTO extends ArqDTO{
         return getUsuario() != null ? getUsuario().hashCode() : 0;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("UserDTO{");
+        sb.append("id=").append(id);
+        sb.append(", usuario='").append(usuario).append('\'');
+        sb.append(", contrasenia='").append(contrasenia).append('\'');
+        sb.append(", roles=").append(roles);
+        sb.append('}');
+        return sb.toString();
+    }
 }
