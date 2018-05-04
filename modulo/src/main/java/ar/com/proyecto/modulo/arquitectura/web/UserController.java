@@ -38,7 +38,7 @@ public class UserController {
         return service.findAll();
     }
 
-    @PostMapping(
+/*    @PostMapping(
             value = "/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
@@ -50,5 +50,5 @@ public class UserController {
         responseHeaders.set("token", "dasdqwedsadqweasdqwedsa");
 
         return new ResponseEntity<>( service.loginSec(user), responseHeaders, HttpStatus.OK);
-    }
+    }*/
 }
