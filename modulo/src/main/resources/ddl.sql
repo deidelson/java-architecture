@@ -1,0 +1,32 @@
+create table PERSONA
+(
+  ID int auto_increment
+    primary key,
+  NOMBRE varchar(30) not null
+);
+
+CREATE TABLE ROLE(
+  ID INT AUTO_INCREMENT,
+  ROLE_NAME VARCHAR (30) NOT NULL,
+  DESCRIPCION  VARCHAR (30) NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+create table USER
+(
+  NICK varchar(30) not null
+    primary key,
+  PASS varchar(30) not null
+);
+
+CREATE TABLE USER_ROLE(
+  ID_ROLE INT NOT NULL,
+  USER_NICK VARCHAR(30) NOT NULL,
+  PRIMARY KEY (ID_ROLE, USER_NICK),
+  FOREIGN KEY (ID_ROLE) REFERENCES ROLE (ID),
+  FOREIGN KEY (USER_NICK) REFERENCES USER(NICK)
+);
+
+
+
+
