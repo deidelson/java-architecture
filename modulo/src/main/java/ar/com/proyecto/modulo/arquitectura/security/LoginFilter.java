@@ -40,7 +40,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 
         // Finalmente autenticamos
         // Spring comparará el user/password recibidos
-        // contra el que definimos en la clase SecurityConfig
+        // contra el que definimos en la clase SecurityConfig (user detatails)
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
                         user.getUsuario(),

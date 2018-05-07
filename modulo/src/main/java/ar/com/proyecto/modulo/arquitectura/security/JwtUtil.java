@@ -4,6 +4,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +15,17 @@ import static java.util.Collections.*;
 
 public class JwtUtil {
 
+    //La key con la que vamos a encriptar el token
     private static final String SING_KEY = "eqwedasqwdasWEDSa";
+
+    //El nombre del header en el que se va a enviar/recibir el token
     public static final String TOKEN_HEADER = "Authorization";
+
     //solo para poner algun prefix custom
     private static final String TOKEN_PREFIX = "";
+
+    //tiempo de vida del token
+    private static final int TIEMPO_DE_VIDA =  600000;
 
     // Método para crear el JWT y enviarlo al cliente en el header de la respuesta
     static void addAuthentication(HttpServletResponse res, String username) {
@@ -27,7 +35,7 @@ public class JwtUtil {
                 .setSubject(username+" "+"valor hardcodeado")
 
                 //aca se pone el tiempo de vida del token, en este caso una hora
-                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .setExpiration(new Date(System.currentTimeMillis() + TIEMPO_DE_VIDA))
 
                 // Encriptamos el token con la key custom y eligiendo un algoritmo
                 .signWith(SignatureAlgorithm.HS512, SING_KEY)
@@ -44,7 +52,7 @@ public class JwtUtil {
         String token = request.getHeader(TOKEN_HEADER);
 
         // si hay un token presente, entonces lo validamos
-        if (token != null) {
+        if (StringUtils.hasText(token)) {
             String user = Jwts.parser()
                     .setSigningKey(SING_KEY)
                     .parseClaimsJws(token.replace(TOKEN_PREFIX, "")) //este metodo es el que valida
