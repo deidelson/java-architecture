@@ -77,9 +77,9 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException(String.format("El usuario %s no existe",s));
 
         List<GrantedAuthority> authorities = new ArrayList<>();
-        usuario.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getNombreRol()));
-        });
+            usuario.getRoles().forEach(role -> {
+                authorities.add(new SimpleGrantedAuthority(role.getNombreRol()));
+            });
 
         UserDetails userDetails = new org.springframework.security.core.userdetails.
                 User(usuario.getUsuario(), usuario.getContrasenia(), authorities);
