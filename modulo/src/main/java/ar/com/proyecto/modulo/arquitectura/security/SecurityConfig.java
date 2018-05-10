@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 /*@Configuration
 @EnableWebSecurity*/
+@Deprecated
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 /*    //Aca estoy inyectando UserServiceImpl, su interface extiende de UserDetails por lo que sirve para el auth

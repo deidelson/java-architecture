@@ -13,6 +13,7 @@ import java.util.Date;
 
 import static java.util.Collections.*;
 
+@Deprecated
 public class JwtUtil {
 
     //La key con la que vamos a encriptar el token
