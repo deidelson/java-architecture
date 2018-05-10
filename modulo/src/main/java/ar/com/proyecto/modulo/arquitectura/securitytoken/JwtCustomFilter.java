@@ -15,7 +15,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Service
+
 public class JwtCustomFilter extends GenericFilterBean {
 
     @Autowired

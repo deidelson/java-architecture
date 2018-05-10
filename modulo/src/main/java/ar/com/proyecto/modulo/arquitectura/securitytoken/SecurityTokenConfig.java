@@ -21,7 +21,6 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
         //Aca estoy inyectando UserServiceImpl, su interface extiende de UserDetails por lo que sirve para el auth
         @Autowired private UserDetailsService userDetailsService;
 
-        @Autowired private JwtCustomFilter customFilter;
 
         @Value("${login.url}") private String loginUrl;
 
@@ -38,7 +37,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                         UsernamePasswordAuthenticationFilter.class)
 
                 // Las demás peticiones pasarán por este filtro para validar el token
-                .addFilterBefore(customFilter,
+                .addFilterBefore(jwtCustomFilter(),
                         UsernamePasswordAuthenticationFilter.class);
     }
 
@@ -51,5 +50,10 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public JwtLoginFilter jwtLoginFilter() throws Exception{
             return new JwtLoginFilter(loginUrl, authenticationManager());
+    }
+
+    @Bean
+    public JwtCustomFilter jwtCustomFilter(){
+            return new JwtCustomFilter();
     }
 }
