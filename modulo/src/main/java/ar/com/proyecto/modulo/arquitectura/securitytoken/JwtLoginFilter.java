@@ -1,7 +1,6 @@
 package ar.com.proyecto.modulo.arquitectura.securitytoken;
 
 import ar.com.proyecto.modulo.arquitectura.model.dto.UserDTO;
-import ar.com.proyecto.modulo.arquitectura.security.JwtUtil;
 import ar.com.proyecto.modulo.arquitectura.securitytoken.interfaces.TokenProvider;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Service;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -28,9 +26,11 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Autowired
     TokenProvider tokenProvider;
 
-    @Value("${token.header.name}") private String tokenHeader;
+    @Value("${token.headerName}")
+    private String headerName;
 
-    @Value("${token.prefix}") private String tokenPrefix;
+    @Value("${token.prefix}")
+    private String prefix;
 
     public JwtLoginFilter(String loginUrl , AuthenticationManager authManager){
         super(new AntPathRequestMatcher(loginUrl));
@@ -63,6 +63,6 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
         System.out.println(auth.getName());
         String token = tokenProvider.generarToken(auth.getName());
 
-        res.addHeader(tokenHeader, tokenPrefix+" "+token);
+        res.addHeader(headerName, prefix +" "+token);
     }
 }

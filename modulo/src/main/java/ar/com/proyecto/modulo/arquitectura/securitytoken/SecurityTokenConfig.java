@@ -27,11 +27,14 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private BeanFactory beanFactory;
 
+    @Value("${login.url}")
+    private String loginUrl;
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/login").permitAll() //permitimos el acceso a /login a cualquiera
+                .antMatchers(loginUrl).permitAll() //permitimos el acceso a /login a cualquiera
                 .anyRequest().authenticated() //cualquier otra peticion requiere autenticacion
                 .and()
                 // Las peticiones /login pasaran previamente por este filtro (mirar el bean)
