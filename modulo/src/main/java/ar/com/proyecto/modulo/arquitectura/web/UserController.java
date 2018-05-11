@@ -39,18 +39,4 @@ public class UserController {
         return service.findAll();
     }
 
-    @PostMapping(
-            value = "/login",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> loggin(@RequestBody UserDTO user){
-        HttpHeaders responseHeaders = new HttpHeaders();
-        System.out.println("Entre");
-        String token= responseHeaders.get(JwtUtil.TOKEN_HEADER).get(0);
-        System.out.println("token "+token);
-        return new ResponseEntity<>(token, responseHeaders, HttpStatus.OK);
-    }
 }

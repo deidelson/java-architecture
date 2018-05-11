@@ -34,4 +34,5 @@ public class JwtCustomFilter extends GenericFilterBean {
         }
         chain.doFilter(request, response);
     }
+
 }

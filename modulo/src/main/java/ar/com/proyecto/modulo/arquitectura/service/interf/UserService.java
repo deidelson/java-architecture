@@ -15,8 +15,5 @@ public interface UserService extends UserDetailsService {
 
     List<UserDTO> findAll();
 
-    ResponseDTO<UserDTO> login(UserDTO user);
-
-    ResponseDTO<UserDetails> loginSec(UserDTO user);
 
 }
