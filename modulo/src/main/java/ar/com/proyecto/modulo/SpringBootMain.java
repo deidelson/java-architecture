@@ -26,16 +26,19 @@ public class SpringBootMain {
 
 
     @Bean
+    @ConfigurationProperties(prefix = "token")
     public JwtLoginFilter jwtLoginFilter(AuthenticationManager authenticationManager) {
         return new JwtLoginFilter(loginUrl, authenticationManager);
     }
 
     @Bean
+    @ConfigurationProperties(prefix = "token")
     public JwtCustomFilter jwtCustomFilter() {
         return new JwtCustomFilter();
     }
 
     @Bean
+    @ConfigurationProperties(prefix = "token")
     public TokenProvider tokenProvider(){
         return new TokenProviderImpl();
     }
