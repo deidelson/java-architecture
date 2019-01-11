@@ -23,12 +23,21 @@ public class UserDaoImpl extends ArqDaoImpl<User, Long> implements UserDao {
 
     @Override
     public User findUserByUser(String nick) {
-       List<User> u = (List<User>) getEntityManager()
-               .createQuery("select u from User u where u.usuario = :nick")
+       List<User> u =  getEntityManager()
+               .createQuery("select u from User u left join fetch u.roles where u.usuario = :nick", User.class)
                .setParameter( "nick", nick)
                .getResultList();
 
        return u != null && u.size()>0 ? u.get(0) : null;
+    }
+
+    @Override
+    public List<User> findAll(){
+        List<User> ret = getEntityManager()
+                .createQuery("select u from User u left join fetch u.roles", User.class)
+                .getResultList();
+
+        return ret;
     }
 
 }

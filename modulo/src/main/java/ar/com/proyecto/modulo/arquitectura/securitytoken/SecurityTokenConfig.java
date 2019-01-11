@@ -1,10 +1,12 @@
-package ar.com.proyecto.modulo.arquitectura.security;
+package ar.com.proyecto.modulo.arquitectura.securitytoken;
 
-import ar.com.proyecto.modulo.arquitectura.securitytoken.JwtCustomFilter;
-import ar.com.proyecto.modulo.arquitectura.securitytoken.JwtLoginFilter;
-import ar.com.proyecto.modulo.arquitectura.service.impl.UserServiceImpl;
+
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,30 +14,36 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/*@Configuration
-@EnableWebSecurity*/
-@Deprecated
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+import javax.annotation.PostConstruct;
 
-/*    //Aca estoy inyectando UserServiceImpl, su interface extiende de UserDetails por lo que sirve para el auth
+@Configuration
+@EnableWebSecurity
+public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
+
+    //Aca estoy inyectando UserServiceImpl, su interface extiende de UserDetails por lo que sirve para el auth
     @Autowired
-    UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
-    @Autowired JwtCustomFilter customFilter;
+    @Autowired
+    private BeanFactory beanFactory;
+
+    @Value("${login.url}")
+    private String loginUrl;
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/login").permitAll() //permitimos el acceso a /login a cualquiera
+                .antMatchers(loginUrl).permitAll() //permitimos el acceso a /login a cualquiera
                 .anyRequest().authenticated() //cualquier otra peticion requiere autenticacion
                 .and()
-                // Las peticiones /login pasaran previamente por este filtro
-                .addFilterBefore(new JwtLoginFilter("/login", authenticationManager()),
+                // Las peticiones /login pasaran previamente por este filtro (mirar el bean)
+
+                .addFilterBefore(beanFactory.getBean("jwtLoginFilter", JwtLoginFilter.class),
                         UsernamePasswordAuthenticationFilter.class)
 
                 // Las demás peticiones pasarán por este filtro para validar el token
-                .addFilterBefore(customFilter,
+                .addFilterBefore(beanFactory.getBean("jwtCustomFilter", JwtCustomFilter.class),
                         UsernamePasswordAuthenticationFilter.class);
     }
 
@@ -43,5 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //autenticacion con cualquier service que implemente userDetails
         auth.userDetailsService(userDetailsService);
-    }*/
+    }
+
 }

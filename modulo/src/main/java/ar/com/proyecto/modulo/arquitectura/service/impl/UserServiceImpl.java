@@ -47,29 +47,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseDTO<UserDTO> login(UserDTO user) {
-        User u = dao.findUserByUser(user.getUsuario());
-
-        ResponseDTO<UserDTO> ret = new ResponseDTO<>();
-
-        ret.setObjeto(u != null && u.getContrasenia().equals(user.getContrasenia()) ? userMapper.toDTO(u) : null);
-        ret.setResponse(u != null && u.getContrasenia().equals(user.getContrasenia()) ? "Exito" : "Credenciales incorrectas");
-
-        return ret;
-    }
-
-    @Override
-    public ResponseDTO<UserDetails> loginSec(UserDTO user) {
-        ResponseDTO<UserDetails> ret = new ResponseDTO<>();
-
-        UserDetails retUd = loadUserByUsername(user.getUsuario());
-
-        ret.setObjeto(retUd);
-
-        return ret;
-    }
-
-    @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User usuario = dao.findUserByUser(s);
 
@@ -77,9 +54,9 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException(String.format("El usuario %s no existe",s));
 
         List<GrantedAuthority> authorities = new ArrayList<>();
-        usuario.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getNombreRol()));
-        });
+            usuario.getRoles().forEach(role -> {
+                authorities.add(new SimpleGrantedAuthority(role.getNombreRol()));
+            });
 
         UserDetails userDetails = new org.springframework.security.core.userdetails.
                 User(usuario.getUsuario(), usuario.getContrasenia(), authorities);
