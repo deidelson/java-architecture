@@ -19,7 +19,7 @@
 	</parent>
 
 	<modules>
-		<module>modulo</module>
+		<module>architecture</module>
 	</modules>
 
 	<properties>
