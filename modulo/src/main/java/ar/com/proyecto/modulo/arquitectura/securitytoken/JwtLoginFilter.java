@@ -24,7 +24,7 @@ import java.util.Collections;
 public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     @Autowired
-    TokenProvider tokenProvider;
+    private TokenProvider tokenProvider;
 
     @Value("${token.headerName}")
     private String headerName;
