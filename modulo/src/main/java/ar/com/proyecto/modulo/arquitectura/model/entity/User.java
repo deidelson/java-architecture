@@ -20,8 +20,8 @@ public class User extends ArqEntity{
 
     @ManyToMany(targetEntity = Rol.class, cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE",
-            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"))
+            joinColumns = @JoinColumn(name = "ID_USER", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "ID_ROLE", referencedColumnName = "ID"))
     private List<Rol> roles;
 
     public User() {
