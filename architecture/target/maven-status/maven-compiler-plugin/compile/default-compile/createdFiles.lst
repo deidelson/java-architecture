@@ -3,7 +3,6 @@ ar/com/proyecto/architecture/arquitectura/model/dto/ArqDTO.class
 ar/com/proyecto/architecture/service/interfaces/PersonaService.class
 ar/com/proyecto/architecture/web/PersonaController.class
 ar/com/proyecto/architecture/model/mapper/PersonaMapper.class
-ar/com/proyecto/architecture/SpringBootMain.class
 ar/com/proyecto/architecture/arquitectura/model/mapper/GenericMapper.class
 ar/com/proyecto/architecture/persistencia/interfaces/PersonaDao.class
 ar/com/proyecto/architecture/arquitectura/security/JwtUtil.class

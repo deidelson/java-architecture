@@ -20,6 +20,7 @@
 
 	<modules>
 		<module>architecture</module>
+		<module>my-expenses</module>
 	</modules>
 
 	<properties>

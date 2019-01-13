@@ -1,12 +1,16 @@
 package ar.com.proyecto.architecture.arquitectura.securitytoken;
 
 
+import ar.com.proyecto.architecture.arquitectura.securitytoken.interfaces.TokenProvider;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,7 +32,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     private BeanFactory beanFactory;
 
     @Value("${login.url}")
-    private String loginUrl;
+    public String loginUrl;
 
 
     @Override
@@ -51,6 +55,24 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //autenticacion con cualquier service que implemente userDetails
         auth.userDetailsService(userDetailsService);
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "token")
+    public JwtLoginFilter jwtLoginFilter(AuthenticationManager authenticationManager) {
+        return new JwtLoginFilter(loginUrl, authenticationManager);
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "token")
+    public JwtCustomFilter jwtCustomFilter() {
+        return new JwtCustomFilter();
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "token")
+    public TokenProvider tokenProvider(){
+        return new TokenProviderImpl();
     }
 
 }
