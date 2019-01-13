@@ -1,5 +1,7 @@
 /target/
+/architecture/target/
 /my-expenses/target/
+
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
