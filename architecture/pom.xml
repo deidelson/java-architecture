@@ -79,12 +79,25 @@
     </dependencies>
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>*.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>ar.com.proyecto.modulo.SpringBootMain</mainClass>
+                    <mainClass>ar.com.proyecto.architecture.SpringBootMain</mainClass>
                 </configuration>
             </plugin>
         </plugins>
