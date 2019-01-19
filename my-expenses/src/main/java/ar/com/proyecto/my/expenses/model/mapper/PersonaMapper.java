@@ -1,8 +1,8 @@
 package ar.com.proyecto.my.expenses.model.mapper;
 
 import ar.com.proyecto.architecture.model.mapper.GenericMapper;
-import ar.com.proyecto.architecture.persona.model.dto.PersonaDTO;
-import ar.com.proyecto.architecture.persona.model.entity.Persona;
+import ar.com.proyecto.my.expenses.model.dto.PersonaDTO;
+import ar.com.proyecto.my.expenses.model.entity.Persona;
 import org.springframework.stereotype.Service;
 
 @Service

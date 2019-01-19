@@ -1,5 +1,6 @@
 package ar.com.proyecto.my.expenses.model.entity;
 
+
 import ar.com.proyecto.architecture.model.entity.ArqEntity;
 
 import javax.persistence.*;

@@ -1,10 +1,10 @@
-package ar.com.proyecto.architecture.persona.service.impl;
+package ar.com.proyecto.my.expenses.service.impl;
 
-import ar.com.proyecto.architecture.persona.model.dto.PersonaDTO;
-import ar.com.proyecto.architecture.persona.model.entity.Persona;
-import ar.com.proyecto.architecture.persona.model.mapper.PersonaMapper;
-import ar.com.proyecto.architecture.persona.persistencia.interfaces.PersonaDao;
-import ar.com.proyecto.architecture.persona.service.interfaces.PersonaService;
+import ar.com.proyecto.my.expenses.model.dto.PersonaDTO;
+import ar.com.proyecto.my.expenses.model.entity.Persona;
+import ar.com.proyecto.my.expenses.model.mapper.PersonaMapper;
+import ar.com.proyecto.my.expenses.persistence.interfaces.PersonaDao;
+import ar.com.proyecto.my.expenses.service.interfaces.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PersonaServiceImpl implements PersonaService{
+public class PersonaServiceImpl implements PersonaService {
 
     PersonaDao personaDao;
     PersonaMapper personaMapper;

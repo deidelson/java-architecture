@@ -1,7 +1,7 @@
-package ar.com.proyecto.architecture.persona.web;
+package ar.com.proyecto.my.expenses.web;
 
-import ar.com.proyecto.architecture.persona.model.dto.PersonaDTO;
-import ar.com.proyecto.architecture.persona.service.interfaces.PersonaService;
+import ar.com.proyecto.my.expenses.service.interfaces.PersonaService;
+import ar.com.proyecto.my.expenses.model.dto.PersonaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
