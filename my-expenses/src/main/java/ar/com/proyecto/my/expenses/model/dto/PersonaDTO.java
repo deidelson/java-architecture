@@ -1,4 +1,4 @@
-package ar.com.proyecto.architecture.persona.model.dto;
+package ar.com.proyecto.my.expenses.model.dto;
 
 import ar.com.proyecto.architecture.model.dto.ArqDTO;
 

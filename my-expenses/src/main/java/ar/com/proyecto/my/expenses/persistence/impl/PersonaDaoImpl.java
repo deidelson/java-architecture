@@ -1,8 +1,8 @@
-package ar.com.proyecto.architecture.persona.persistencia.impl;
+package ar.com.proyecto.my.expenses.persistence.impl;
 
 import ar.com.proyecto.architecture.dao.impl.ArqDaoImpl;
-import ar.com.proyecto.architecture.persona.model.entity.Persona;
-import ar.com.proyecto.architecture.persona.persistencia.interfaces.PersonaDao;
+import ar.com.proyecto.my.expenses.model.entity.Persona;
+import ar.com.proyecto.my.expenses.persistence.interfaces.PersonaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * un problema es que si hacemos esto no funcionan los @Query de las interfaces, hay que implementar todos los metodos "no custom"
  */
 @Repository
-public class PersonaDaoImpl extends ArqDaoImpl<Persona, Long> implements PersonaDao{
+public class PersonaDaoImpl extends ArqDaoImpl<Persona, Long> implements PersonaDao {
 
 
     public PersonaDaoImpl(@Autowired EntityManager entityManager) {

@@ -1,4 +1,5 @@
-package ar.com.proyecto.architecture.persona.model.entity;
+package ar.com.proyecto.my.expenses.model.entity;
+
 
 import ar.com.proyecto.architecture.model.entity.ArqEntity;
 
