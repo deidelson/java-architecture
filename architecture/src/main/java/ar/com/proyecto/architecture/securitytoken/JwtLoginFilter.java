@@ -64,5 +64,9 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
         String token = tokenProvider.generarToken(auth.getName());
 
         res.addHeader(headerName, prefix +" "+token);
+        res.addHeader("Content-Type", "application/json");
+        res.getWriter().write(
+                "{\"" + "token" + "\" : \"" + prefix+" "+token + "\"}"
+        );
     }
 }
