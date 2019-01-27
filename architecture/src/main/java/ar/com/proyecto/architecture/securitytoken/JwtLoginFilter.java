@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.Collections;
 
 
+@Deprecated
 public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     @Autowired
@@ -61,7 +62,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) throws IOException, ServletException {
         System.out.println(auth.getName());
-        String token = tokenProvider.generarToken(auth.getName());
+        String token = tokenProvider.generateToken(auth.getName());
 
         res.addHeader(headerName, prefix +" "+token);
         res.addHeader("Content-Type", "application/json");

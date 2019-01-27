@@ -27,7 +27,7 @@ public class TokenProviderImpl implements TokenProvider {
     private int liveTime;
 
     @Override
-    public String generarToken(String username) {
+    public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + liveTime))
@@ -36,7 +36,7 @@ public class TokenProviderImpl implements TokenProvider {
     }
 
     @Override
-    public boolean validarToken(String token) {
+    public boolean validateToken(String token) {
             Jwts.parser()
                     .setSigningKey(key)
                     .parseClaimsJws(token.replace(prefix, ""));
