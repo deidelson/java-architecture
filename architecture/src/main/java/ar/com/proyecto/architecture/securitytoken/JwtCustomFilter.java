@@ -25,7 +25,7 @@ public class JwtCustomFilter extends GenericFilterBean {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest)request;
         String token = httpServletRequest.getHeader(headerName);
-        if(tokenProvider.validarToken(token)){
+        if(token!=null && tokenProvider.validarToken(token)){
             Authentication authentication = this.tokenProvider.getAutentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
