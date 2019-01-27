@@ -39,7 +39,9 @@ CREATE TABLE USER_ROLE(
 
 insert into ROLE (ROLE_NAME, DESCRIPCION) VALUES ('admin', 'admin');
 insert into USER (NICK, PASS) VALUES ('admin', 'admin');
+insert into USER (NICK, PASS) VALUES ('user', 'user');
 insert into USER_ROLE (ROLE_ID, USER_ID) VALUES (1, 1);
+insert into USER_ROLE (ROLE_ID, USER_ID) VALUES (1, 2);
 
 INSERT INTO PERSONA(NOMBRE) VALUES ('persona 1');
 INSERT INTO PERSONA(NOMBRE) VALUES ('persona 2');
