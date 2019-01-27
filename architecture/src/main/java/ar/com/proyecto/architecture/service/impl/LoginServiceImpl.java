@@ -41,7 +41,6 @@ public class LoginServiceImpl implements LoginService {
         String token = this.tokenProvider.generateToken(user.getUsername());
         ret.setToken(token);
         ret.setUsuario(user.getUsername());
-        ret.setContrasenia(user.getPassword());
         return ret;
 
     }
