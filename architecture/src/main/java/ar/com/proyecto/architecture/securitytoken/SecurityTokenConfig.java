@@ -34,13 +34,13 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers(loginUrl).permitAll() //permitimos el acceso a /login a cualquiera
+                .antMatchers(this.loginUrl).permitAll() //permitimos el acceso a /login a cualquiera
                 .anyRequest().authenticated() //cualquier otra peticion requiere autenticacion
                 .and()
                 // Las peticiones /login pasaran previamente por este filtro (mirar el bean)
-
-                .addFilterBefore(beanFactory.getBean("jwtLoginFilter", JwtLoginFilter.class),
-                        UsernamePasswordAuthenticationFilter.class)
+// TODELETE
+//                .addFilterBefore(beanFactory.getBean("jwtLoginFilter", JwtLoginFilter.class),
+//                        UsernamePasswordAuthenticationFilter.class)
 
                 // Las demás peticiones pasarán por este filtro para validar el token
                 .addFilterBefore(beanFactory.getBean("jwtCustomFilter", JwtCustomFilter.class),
@@ -53,11 +53,13 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 
+/*  TODELETE
     @Bean
     @ConfigurationProperties(prefix = "token")
     public JwtLoginFilter jwtLoginFilter(AuthenticationManager authenticationManager) {
         return new JwtLoginFilter(loginUrl, authenticationManager);
     }
+*/
 
     @Bean
     @ConfigurationProperties(prefix = "token")
